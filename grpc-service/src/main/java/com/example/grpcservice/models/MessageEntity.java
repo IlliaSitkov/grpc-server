@@ -27,4 +27,14 @@ public class MessageEntity {
         this.receiver = receiver;
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return "MessageEntity{" +
+                "id=" + id +
+                ", author=" + author.getId() +
+                ", receiver=" + receiver.getId() +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

@@ -7,23 +7,18 @@ import com.example.grpcservice.models.UserEntity;
 import com.example.grpcservice.repositories.MessageRepository;
 import com.example.grpcservice.repositories.UserRepository;
 import io.grpc.stub.StreamObserver;
+import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.server.service.GrpcService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Objects;
 
 @GrpcService
-public class ChatService extends ChatServiceGrpc.ChatServiceImplBase {
+@RequiredArgsConstructor
+public class ChatServiceGRPC extends ChatServiceGrpc.ChatServiceImplBase {
 
     private final UserRepository userRepository;
 
     private final MessageRepository messageRepository;
-
-    @Autowired
-    public ChatService(UserRepository userRepository, MessageRepository messageRepository) {
-        this.userRepository = userRepository;
-        this.messageRepository = messageRepository;
-    }
 
     @Override
     public void saveUser(User request, StreamObserver<UserResponse> responseObserver) {
